@@ -7,28 +7,36 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="src/matrixcreate.js"></script>
+    <script src="src/scripts.js"></script>
     <script src="src/risk.js"></script>
     <script src="src/uncertanty.js"></script>
 
-    <h2>Matrix Editor</h2>
-    <label for="rows">Rows:</label>
-    <input type="number" id="rows" min="1" value="3">
-    <label for="columns">Columns:</label>
-    <input type="number" id="columns" min="1" value="3">
-    <br>
-    <button onclick="createMatrix()">Create Matrix</button>
-    <button onclick="logMatrix()">Console Log Matrix</button>
-       
-    <div id="pValuesContainer"></div>
-    <table id="matrix"></table>
+    <button onclick="toggleDiv()">Toggle Div</button>
 
-    <div id="criteriaButtons" class="hidden">
-        <label for="aValue">Enter value of a:</label>
-        <input type="number" id="aValue" step="0.01">
-        <button onclick="minimizationOfDispersionCriterion()">Minimization of Dispersion Criterion</button>
-        <button onclick="maximizationOfProbabilityDistributionOfGradesCriterion()">Maximization of Probability Distribution of Grades Criterion</button>
-        <button onclick="modalCriterion()">Modal Criterion</button>
+    <div id="riskDiv">
+        <h2>Критерії прийняття рішення в умовах ризику</h2>
+        <label for="rows">Рядки:</label>
+        <input type="number" id="rows" min="1" value="3">
+        <label for="columns">Стовпці:</label>
+        <input type="number" id="columns" min="1" value="3">
+        <br>
+        <div id="matrix-container">
+            <button onclick="createMatrix()">Створити</button>
+            <br>
+            <label for="aValue" style="margin: auto;">Введіть значення 'a': </label>
+            <input id="aValue" min="1" value="400">
+            <br>
+            <div id="pValuesContainer"></div>
+            <table id="matrix"></table>
+            <button id="calculateButton" onclick="calculateCriteria()" style="display: none; margin: auto;">Розрахувати</button>
+        </div>
+
+        <div id="bayesianResult" class="result-container"></div>
+        <div id="dispersionResult" class="result-container"></div>
+        <div id="maximizationResult" class="result-container"></div>
+        <div id="modalResult" class="result-container"></div>
     </div>
+
+    
 </body>
 </html>
