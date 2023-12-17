@@ -13,15 +13,17 @@
 
     <button onclick="toggleDiv()">Toggle Div</button>
 
+    <button onclick="toggleDiv2()">Toggle Div 2</button>
+
     <div id="riskDiv">
-        <h2>Критерії прийняття рішення в умовах ризику</h2>
+        <h2>Критерії прийняття рішень в умовах ризику</h2>
         <label for="rows">Рядки:</label>
         <input type="number" id="rows" min="1" value="3">
         <label for="columns">Стовпці:</label>
         <input type="number" id="columns" min="1" value="3">
         <br>
         <div id="matrix-container">
-            <button onclick="createMatrix()">Створити</button>
+            <button onclick="createMatrix()" style="margin-bottom: 10px;">Створити</button>
             <br>
             <label for="aValue" style="margin: auto;">Введіть значення 'a': </label>
             <input id="aValue" min="1" value="400">
@@ -37,6 +39,23 @@
         <div id="modalResult" class="result-container"></div>
     </div>
 
-    
+    <div id="uncertantyDiv">
+        <h2>Критерії прийняття рішень в умовах невизначеності</h2>
+        <label for="rows2">Рядки:</label>
+        <input type="number" id="rows2" min="1" value="3">
+        <label for="columns2">Стовпці:</label>
+        <input type="number" id="columns2" min="1" value="3">
+        <br>
+        <button onclick="createMatrix2()" style="margin-bottom: 10px;">Створити</button>
+        <br>
+        <label for="alpha2">Альфа:</label>
+        <input type="number" id="alpha2" step="0.01" min="0" max="1" value="0.6">
+        <br>
+        <button onclick="evaluateCriteria2()">Розрахувати</button>
+
+        <table id="matrix2"></table>
+
+        <div id="results2"></div>
+    </div>
 </body>
 </html>

@@ -82,7 +82,7 @@ function runBayesianCriterion(matrix, p) {
 
   for (let i = 0; i < z.length; i++) {
       if (z[i] === max_value) {
-          optimalAlternatives.push(i);
+          optimalAlternatives.push(i + 1);
       }
   }
 
@@ -91,9 +91,8 @@ function runBayesianCriterion(matrix, p) {
   resultDiv.innerHTML = "<h3>Критерій Байєса:</h3>";
   if (optimalAlternatives.length > 0) {
       resultDiv.innerHTML += "<p>Оптимальні альтернативи:</p>";
-      for (const index of optimalAlternatives) {
-          resultDiv.innerHTML += `<p>Альтернатива ${index + 1}</p>`;
-      }
+      resultDiv.innerHTML += `<p>${optimalAlternatives.join(", ")}</p>`;
+
   } else {
       resultDiv.innerHTML += "<p>Оптимальних альтернатив не знайдено.</p>";
   }
@@ -120,7 +119,7 @@ function minimizationOfDispersionCriterion(matrix, p) {
 
   for (let i = 0; i < z.length; i++) {
       if (z[i] === minValue) {
-          optimalAlternatives.push(i);
+          optimalAlternatives.push(i + 1);
       }
   }
 
@@ -129,9 +128,7 @@ function minimizationOfDispersionCriterion(matrix, p) {
   resultDiv.innerHTML = "<h3>Мінімізація за критерієм дисперсії:</h3>";
   if (optimalAlternatives.length > 0) {
       resultDiv.innerHTML += "<p>Оптимальні альтернативи:</p>";
-      for (const index of optimalAlternatives) {
-          resultDiv.innerHTML += `<p>Альтернатива ${index + 1}</p>`;
-      }
+      resultDiv.innerHTML += `<p>${optimalAlternatives.join(", ")}</p>`;
   } else {
       resultDiv.innerHTML += "<p>Оптимальних альтернатив не знайдено.</p>";
   }
@@ -158,7 +155,7 @@ function maximizationOfProbabilityDistributionOfGradesCriterion(matrix, p, a) {
 
   for (let i = 0; i < z.length; i++) {
       if (z[i] === max_value) {
-          optimalAlternatives.push(i);
+          optimalAlternatives.push(i + 1);
       }
   }
 
@@ -167,9 +164,7 @@ function maximizationOfProbabilityDistributionOfGradesCriterion(matrix, p, a) {
   resultDiv.innerHTML = `<h3>Максимізація ймовірності розподілу оцінок при a = ${a}:</h3>`;
   if (optimalAlternatives.length > 0) {
       resultDiv.innerHTML += "<p>Оптимальні альтернативи:</p>";
-      for (const index of optimalAlternatives) {
-          resultDiv.innerHTML += `<p>Альтернатива ${index + 1}</p>`;
-      }
+      resultDiv.innerHTML += `<p>${optimalAlternatives.join(", ")}</p>`;
   } else {
       resultDiv.innerHTML += "<p>Оптимальних альтернатив не знайдено.</p>";
   }
@@ -205,7 +200,7 @@ function modalCriterion(matrix, p) {
 
   for (let i = 0; i < z.length; i++) {
       if (z[i] === max_value) {
-          optimalAlternatives.push(i);
+          optimalAlternatives.push(i + 1);
       }
   }
 
@@ -214,9 +209,7 @@ function modalCriterion(matrix, p) {
   resultDiv.innerHTML = "<h3>Модальний критерій:</h3>";
   if (optimalAlternatives.length > 0) {
       resultDiv.innerHTML += "<p>Оптимальні альтернативи:</p>";
-      for (const index of optimalAlternatives) {
-          resultDiv.innerHTML += `<p>Альтернатива ${index + 1}</p>`;
-      }
+      resultDiv.innerHTML += `<p>${optimalAlternatives.join(", ")}</p>`;
   } else {
       resultDiv.innerHTML += "<p>Оптимальних альтернатив не знайдено.</p>";
   }

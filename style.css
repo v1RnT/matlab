@@ -24,6 +24,11 @@ button {
 #riskDiv {
     display: none;
 }
+
+#uncertantyDiv {
+    display: none;
+}
+
 #pValuesContainer input {
     margin: 0 8.66px;
 }
