@@ -2,6 +2,8 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 table {
     border-collapse: collapse;
@@ -19,9 +21,10 @@ button {
     margin-top: 10px;
 }
 
-.toggleButton {
+button {
     padding: 10px 20px;
     margin-right: 10px;
+    margin-bottom: 10px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
@@ -31,18 +34,19 @@ button {
     transition: background-color 0.3s ease;
 }
 
-.toggleButton:hover{
+button:hover{
     background-color: #2980b9;
 }
 
 .result-container {
     margin-top: 20px;
 }
-#riskDiv {
-    display: none;
-}
-
-#uncertantyDiv {
+#riskDiv, #uncertantyDiv {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: none;
 }
 
@@ -51,5 +55,17 @@ button {
 }
 
 #matrix-container {
+    margin-top: 20px;
     position: relative;
+}
+
+
+label, input {
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 4px;
 }
