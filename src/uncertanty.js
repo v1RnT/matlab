@@ -67,7 +67,7 @@ function maxmaxCriterion2(matrix2) {
         }
     }
 
-    return { criterion2: "Maxmax Criterion", optimalAlternatives2: optimalAlternatives2 };
+    return { criterion2: "Максмакс Критерій", optimalAlternatives2: optimalAlternatives2 };
 }
 
 function minimaxCriterion2(matrix2) {
@@ -82,7 +82,7 @@ function minimaxCriterion2(matrix2) {
         }
     }
 
-    return { criterion2: "Minimax Criterion", optimalAlternatives2: optimalAlternatives2 };
+    return { criterion2: "Мінмакс Критерій", optimalAlternatives2: optimalAlternatives2 };
 }
 
 function gurvichCriterion2(matrix2, alpha2) {
@@ -103,7 +103,7 @@ function gurvichCriterion2(matrix2, alpha2) {
         }
     }
 
-    return { criterion2: `Gurvich Criterion with alpha=${alpha2}`, optimalAlternatives2: optimalAlternatives2 };
+    return { criterion2: `Критерій Гурвіча з альфа=${alpha2}`, optimalAlternatives2: optimalAlternatives2 };
 }
 
 function sevidzchCriterion2(matrix2) {
@@ -142,7 +142,7 @@ function sevidzchCriterion2(matrix2) {
         }
     }
 
-    return { criterion2: "Sevidzch Criterion", optimalAlternatives2: optimalAlternatives2 };
+    return { criterion2: "Критерій Севіджа", optimalAlternatives2: optimalAlternatives2 };
 }
 
 function displayResults2(maxmaxResult2, minimaxResult2, gurvichResult2, sevidzchResult2) {
@@ -152,36 +152,36 @@ function displayResults2(maxmaxResult2, minimaxResult2, gurvichResult2, sevidzch
     // Display Maxmax Criterion results
     resultsDiv2.innerHTML += `<h3>${maxmaxResult2.criterion2}</h3>`;
     if (maxmaxResult2.optimalAlternatives2.length > 0) {
-        resultsDiv2.innerHTML += "<p>Optimal Alternatives:</p>";
+        resultsDiv2.innerHTML += "<p>Оптимальні альтернативи:</p>";
         resultsDiv2.innerHTML += `<p>${maxmaxResult2.optimalAlternatives2.join(", ")}</p>`;
     } else {
-        resultsDiv2.innerHTML += "<p>No optimal alternatives found.</p>";
+        resultsDiv2.innerHTML += "<p>Оптимальних альтернатив не знайдено.</p>";
     }
 
     // Display Minimax Criterion results
     resultsDiv2.innerHTML += `<h3>${minimaxResult2.criterion2}</h3>`;
     if (minimaxResult2.optimalAlternatives2.length > 0) {
-        resultsDiv2.innerHTML += "<p>Optimal Alternatives:</p>";
+        resultsDiv2.innerHTML += "<p>Оптимальні альтернативи:</p>";
         resultsDiv2.innerHTML += `<p>${minimaxResult2.optimalAlternatives2.join(", ")}</p>`;
     } else {
-        resultsDiv2.innerHTML += "<p>No optimal alternatives found.</p>";
+        resultsDiv2.innerHTML += "<p>Оптимальних альтернатив не знайдено.</p>";
     }
 
     // Display Gurvich Criterion results
     resultsDiv2.innerHTML += `<h3>${gurvichResult2.criterion2}</h3>`;
     if (gurvichResult2.optimalAlternatives2.length > 0) {
-        resultsDiv2.innerHTML += "<p>Optimal Alternatives:</p>";
+        resultsDiv2.innerHTML += "<p>Оптимальні альтернативи:</p>";
         resultsDiv2.innerHTML += `<p>${gurvichResult2.optimalAlternatives2.join(", ")}</p>`;
     } else {
-        resultsDiv2.innerHTML += "<p>No optimal alternatives found.</p>";
+        resultsDiv2.innerHTML += "<p>Оптимальних альтернатив не знайдено.</p>";
     }
 
     // Display Sevidzch Criterion results
     resultsDiv2.innerHTML += `<h3>${sevidzchResult2.criterion2}</h3>`;
     if (sevidzchResult2.optimalAlternatives2.length > 0) {
-        resultsDiv2.innerHTML += "<p>Optimal Alternatives:</p>";
+        resultsDiv2.innerHTML += "<p>Оптимальні альтернативи:</p>";
         resultsDiv2.innerHTML += `<p>${sevidzchResult2.optimalAlternatives2.join(", ")}</p>`;
     } else {
-        resultsDiv2.innerHTML += "<p>No optimal alternatives found.</p>";
+        resultsDiv2.innerHTML += "<p>Оптимальних альтернатив не знайдено.</p>";
     }
 }

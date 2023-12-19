@@ -18,6 +18,23 @@ td {
 button {
     margin-top: 10px;
 }
+
+.toggleButton {
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #3498db;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggleButton:hover{
+    background-color: #2980b9;
+}
+
 .result-container {
     margin-top: 20px;
 }
