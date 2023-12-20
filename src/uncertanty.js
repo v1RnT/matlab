@@ -25,14 +25,8 @@ function createMatrix2() {
             cell.appendChild(input);
         }
     }
-}
-
-function logMatrix2() {
-    let matrix2 = matrixInputs2.map(row => row.map(input => parseInt(input.value)));
-
-    // Log the entire matrix
-    console.log("Matrix2:");
-    console.log(matrix2);
+    // Show the calculate button
+    document.getElementById("evaluateCriteria2").style.display = "block";
 }
 
 function evaluateCriteria2() {
