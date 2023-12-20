@@ -26,7 +26,65 @@ function createMatrix2() {
         }
     }
     // Show the calculate button
+    document.getElementById("alphaInput").style.display = "block";
     document.getElementById("evaluateCriteria2").style.display = "block";
+}
+
+function handleFileSelect2() {
+    const rowsInput = document.getElementById("rows2");
+    const columnsInput = document.getElementById("columns2");
+    const fileInput = document.getElementById("fileInput2");
+    const matrixTable2 = document.getElementById("matrix2");
+
+    // Clear existing table and matrixInputs array
+    matrixTable2.innerHTML = "";
+    matrixInputs2 = [];
+
+    // Check if a file is selected
+    if (fileInput.files.length > 0) {
+        const selectedFile = fileInput.files[0];
+
+        // Wrap file reading logic in a Promise
+        const readFilePromise = new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                const fileContent = event.target.result.split('\n');
+
+                // Determine dimensions based on file content
+                const fileRows = fileContent.length;
+                const fileColumns = fileContent[0] ? fileContent[0].split(' ').length : 0;
+
+                // Update rows and columns input values
+                rowsInput.value = fileRows;
+                columnsInput.value = fileColumns;
+
+                // Create the matrix
+                createMatrix2(fileRows, fileColumns);
+
+                // Populate the matrix with file content
+                for (let i = 0; i < fileRows; i++) {
+                    const values = fileContent[i].split(' ');
+                    for (let j = 0; j < fileColumns; j++) {
+                        matrixInputs2[i][j].value = values[j] || "";
+                    }
+                }
+
+                resolve();
+            };
+
+            reader.onerror = function (event) {
+                reject(event.target.error);
+            };
+
+            reader.readAsText(selectedFile);
+        });
+
+        // Once the file is read, update the matrix
+        readFilePromise.catch((error) => {
+            console.error("Error reading file:", error);
+        });
+    }
 }
 
 function evaluateCriteria2() {

@@ -21,8 +21,6 @@ td {
     padding: 8px;
 }
 
-
-
 button {
     padding: 10px 20px;
     font-size: 16px;
@@ -36,6 +34,21 @@ button {
 
 button:hover{
     background-color: #2980b9;
+}
+.p-input-wrapper{
+    margin-bottom: 10px;
+}
+.file-input-wrapper input{
+    margin-right: 100px;
+}
+
+.file-input-wrapper input, .p-input-wrapper input {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
 }
 
 .result-container {

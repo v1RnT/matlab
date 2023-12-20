@@ -2,55 +2,148 @@ let matrixInputs = [];
 let pInputs = [];
 
 function createMatrix() {
-  const rows = document.getElementById("rows").value;
-  const columns = document.getElementById("columns").value;
-  const matrixTable = document.getElementById("matrix");
-  const pValuesContainer = document.getElementById("pValuesContainer");
+    const rows = document.getElementById("rows").value;
+    const columns = document.getElementById("columns").value;
+    const matrixTable = document.getElementById("matrix");
+    const pValuesContainer = document.getElementById("pValuesContainer");
+    const fileInput = document.getElementById("fileInput");
 
-  // Clear existing table, matrixInputs array, and pInputs array
-  matrixTable.innerHTML = "";
-  pValuesContainer.innerHTML = "";
-  matrixInputs = [];
-  pInputs = [];
+    // Clear existing table, matrixInputs array, and pInputs array
+    matrixTable.innerHTML = "";
+    pValuesContainer.innerHTML = "";
+    matrixInputs = [];
+    pInputs = [];
 
-  // Create input fields for p above each column
-  for (let j = 0; j < columns; j++) {
-      const pInput = document.createElement("input");
-      pInput.type = "number";
-      pInput.min = "0";
-      pInput.max = "1";
-      pInput.step = "0.01";
-      pInput.placeholder = `p${j + 1}`;
-      pInputs.push(pInput);
-      pValuesContainer.appendChild(pInput);
-  }
+    // Check if a file is selected
+    
+        // Create input fields for p above each column
+        for (let j = 0; j < columns; j++) {
+            const pInput = document.createElement("input");
+            pInput.type = "number";
+            pInput.min = "0";
+            pInput.max = "1";
+            pInput.step = "0.01";
+            pInput.placeholder = `p${j + 1}`;
+            pInputs.push(pInput);
+            pValuesContainer.appendChild(pInput);
+        }
+        // Create the matrix
+        for (let i = 0; i < rows; i++) {
+            const row = matrixTable.insertRow(i);
+            matrixInputs[i] = [];
+            for (let j = 0; j < columns; j++) {
+                const cell = row.insertCell(j);
+                const input = document.createElement("input");
+                input.type = Number;
+                input.value = 0;
+                input.addEventListener("focus", function () {
+                    this.select();
+                });
+                matrixInputs[i][j] = input;
+                cell.appendChild(input);
+            }
+        }
+    
 
-  // Create the matrix
-  for (let i = 0; i < rows; i++) {
-      const row = matrixTable.insertRow(i);
-      matrixInputs[i] = [];
-      for (let j = 0; j < columns; j++) {
-          const cell = row.insertCell(j);
-          const input = document.createElement("input");
-          input.type = Number;
-          input.value = 0;
-          input.addEventListener("focus", function () {
-              this.select();
-          });
-          matrixInputs[i][j] = input;
-          cell.appendChild(input);
-      }
-  }
-
-  // Show the calculate button
+  // Show the shiiiits
+  document.getElementById("p-input-wrapper").style.display = "block";
+  document.getElementById("aInput").style.display = "block";
   document.getElementById("calculateButton").style.display = "block";
 }
+
+function importPs() {
+    const pInput = document.getElementById("pInput");
+
+    if (pInput.files.length > 0) {
+        const selectedFile = pInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            const fileContent = event.target.result.split(/\s+/);
+            const pValues = fileContent.filter(val => val.trim() !== '').map(val => parseFloat(val));
+
+            if (pValues.some(isNaN) || pValues.some(val => val < 0 || val > 1)) {
+                alert("Invalid values for p. Please enter values between 0 and 1 in the file.");
+                return;
+            }
+
+            // Clear existing p inputs
+            pValuesContainer.innerHTML = "";
+            pInputs = [];
+
+            // Populate the p inputs
+            pValues.forEach((value, index) => {
+                const pInput = document.createElement("input");
+                pInput.type = Number;
+                pInput.min = "0";
+                pInput.max = "1";
+                pInput.step = "0.01";
+                pInput.value = value;
+                pInputs.push(pInput);
+                pValuesContainer.appendChild(pInput);
+            });
+
+            // Show the p values container
+            document.getElementById("pValuesContainer").style.display = "block";
+        };
+
+        reader.readAsText(selectedFile);
+    }
+}
+
+
+// Function to handle file input and create matrix
+function handleFileSelect() {
+    const rowsInput = document.getElementById("rows");
+    const columnsInput = document.getElementById("columns");
+    const fileInput = document.getElementById("fileInput");
+
+    // Clear existing table, matrixInputs array, and pInputs array
+    const matrixTable = document.getElementById("matrix");
+    const pValuesContainer = document.getElementById("pValuesContainer");
+    
+    matrixTable.innerHTML = "";
+    pValuesContainer.innerHTML = "";
+    matrixInputs = [];
+    pInputs = [];
+
+    // Check if a file is selected
+    if (fileInput.files.length > 0) {
+        const selectedFile = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            const fileContent = event.target.result.split('\n');
+
+            // Determine dimensions based on file content
+            const fileRows = fileContent.length;
+            const fileColumns = fileContent[0] ? fileContent[0].split(' ').length : 0;
+
+            // Update rows and columns input values
+            rowsInput.value = fileRows;
+            columnsInput.value = fileColumns;
+
+            // Create the matrix
+            createMatrix(fileRows, fileColumns);
+
+            // Populate the matrix with file content
+            for (let i = 0; i < fileRows; i++) {
+                const values = fileContent[i].split(' ');
+                for (let j = 0; j < fileColumns; j++) {
+                    matrixInputs[i][j].value = values[j] || "";
+                }
+            }
+        };
+
+        reader.readAsText(selectedFile);
+    }
+}
+
 
 function calculateCriteria() {
   const matrix = matrixInputs.map(row => row.map(input => parseFloat(input.value)));
   const pValues = pInputs.map(input => parseFloat(input.value));
-  const aValue = document.getElementById("aValue").value;
-  aValue.type = Number;
+  const aValue = parseFloat(document.getElementById("aValue").value);
 
   // Validate input values for p
   if (pValues.some(isNaN) || pValues.some(val => val < 0 || val > 1)) {
