@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
+<body style="background-color: black;">
     <script src="src/scripts.js"></script>
     <script src="src/risk.js"></script>
     <script src="src/uncertanty.js"></script>
@@ -21,11 +21,10 @@
         <input type="number" id="rows" min="1" value="3">
         <label for="columns">Стовпці:</label>
         <input type="number" id="columns" min="1" value="3">
-        <br>
         <div id="matrix-container">
-            <button onclick="createMatrix()" style="margin-bottom: 10px;">Створити</button>
+            <button onclick="createMatrix()" >Створити</button>
             <br>
-            <label for="aValue" style="margin: auto;">Введіть значення 'a': </label>
+            <label for="aValue">Введіть значення 'a': </label>
             <input id="aValue" min="1" value="400">
             <br>
             <div id="pValuesContainer"></div>
@@ -46,9 +45,9 @@
         <label for="columns2">Стовпці:</label>
         <input type="number" id="columns2" min="1" value="3">
         <br>
-        <button onclick="createMatrix2()" style="margin-bottom: 10px;">Створити</button>
+        <button onclick="createMatrix2()">Створити</button>
         <br>
-        <button onclick="evaluateCriteria2()">Розрахувати</button>
+        <button onclick="evaluateCriteria2()" style="display: none; margin: auto;">Розрахувати</button>
         <br>
         <label for="alpha2">Альфа:</label>
         <input type="number" id="alpha2" step="0.01" min="0" max="1" value="0.6">

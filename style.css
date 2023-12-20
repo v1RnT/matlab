@@ -5,26 +5,26 @@ body {
     padding: 0;
     background-color: #f4f4f4;
 }
+
 table {
     border-collapse: collapse;
     margin: 20px auto;
 }
+
 input {
     width: 40px;
     text-align: center;
 }
+
 td {
     border: 1px solid #ddd;
     padding: 8px;
 }
-button {
-    margin-top: 10px;
-}
+
+
 
 button {
     padding: 10px 20px;
-    margin-right: 10px;
-    margin-bottom: 10px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
@@ -41,6 +41,7 @@ button:hover{
 .result-container {
     margin-top: 20px;
 }
+
 #riskDiv, #uncertantyDiv {
     background-color: #fff;
     padding: 20px;
@@ -55,10 +56,8 @@ button:hover{
 }
 
 #matrix-container {
-    margin-top: 20px;
     position: relative;
 }
-
 
 label, input {
     margin-bottom: 10px;
