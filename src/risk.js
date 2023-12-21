@@ -63,7 +63,7 @@ function importPs() {
             const pValues = fileContent.filter(val => val.trim() !== '').map(val => parseFloat(val));
 
             if (pValues.some(isNaN) || pValues.some(val => val < 0 || val > 1)) {
-                alert("Invalid values for p. Please enter values between 0 and 1 in the file.");
+                alert("Неправильні значення p. Введіть значення від 0 до 1.");
                 return;
             }
 
@@ -74,7 +74,7 @@ function importPs() {
             // Populate the p inputs
             pValues.forEach((value, index) => {
                 const pInput = document.createElement("input");
-                pInput.type = Number;
+                pInput.type = "number";
                 pInput.min = "0";
                 pInput.max = "1";
                 pInput.step = "0.01";
@@ -144,12 +144,26 @@ function calculateCriteria() {
   const matrix = matrixInputs.map(row => row.map(input => parseFloat(input.value)));
   const pValues = pInputs.map(input => parseFloat(input.value));
   const aValue = parseFloat(document.getElementById("aValue").value);
+  let sum = 0;
 
-  // Validate input values for p
-  if (pValues.some(isNaN) || pValues.some(val => val < 0 || val > 1)) {
-      alert("Введіть значення p між 0 та 1.");
-      return;
-  }
+    if (pValues.some(isNaN) || pValues.some(val => val < 0 || val > 1)) {
+        alert("Введіть значення p між 0 та 1.");
+        return;
+    }
+
+    for (let i = 0; i < pValues.length; i++) {
+        sum += pValues[i];
+    }
+
+    if(sum > 1){
+        alert("Ваші значення більше 1. Введіть значення p, які сумуються до 1.");
+        return;
+    }
+
+    if(sum != 1){
+        alert("Ваші значення менше 1. Введіть значення p, які сумуються до 1.");
+        return;
+    }
 
   runBayesianCriterion(matrix, pValues);
   minimizationOfDispersionCriterion(matrix, pValues);
